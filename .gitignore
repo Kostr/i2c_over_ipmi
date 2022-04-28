@@ -1,2 +1,4 @@
 *.o
 i2cdump_over_ipmi
+i2cget_over_ipmi
+i2cset_over_ipmi
