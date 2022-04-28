@@ -39,40 +39,40 @@ int str_to_uint8(const char* str, uint8_t* result)
 int main(int argc, char* argv[])
 {
 	if (iopl(3)) {
-		printf("Error! Need sudo priviliges\n");
+		fprintf(stderr, "Error! Need sudo priviliges\n");
 		exit(1);	
 	}
 
 	if (argc != 5) {
-		printf("Error! Not enough arguments\n");
+		fprintf(stderr, "Error! Not enough arguments\n");
 		usage(argv[0]);
 		return 1;
 	}
 
 	uint8_t bus, addr, reg, val;
 	if (str_to_uint8(argv[1], &bus)) {
-		printf("Error! Wrong number for the <I2C_BUS> value\n");
+		fprintf(stderr, "Error! Wrong number for the <I2C_BUS> value\n");
 		usage(argv[0]);
 		return 2;
 	}
 	if (str_to_uint8(argv[2], &addr)) {
-		printf("Error! Wrong number for the <I2C_ADDR> value\n");
+		fprintf(stderr, "Error! Wrong number for the <I2C_ADDR> value\n");
 		usage(argv[0]);
 		return 3;
 	}
 	if (str_to_uint8(argv[3], &reg)) {
-		printf("Error! Wrong number for the <I2C_REG> value\n");
+		fprintf(stderr, "Error! Wrong number for the <I2C_REG> value\n");
 		usage(argv[0]);
 		return 4;
 	}
 	if (str_to_uint8(argv[4], &val)) {
-		printf("Error! Wrong number for the <VAL> value\n");
+		fprintf(stderr, "Error! Wrong number for the <VAL> value\n");
 		usage(argv[0]);
 		return 5;
 	}
 
 	if (write_i2c(bus, addr, reg, val)) {
-		printf("Error\n");
+		fprintf(stderr, "Error\n");
 	}
 
 	return 0;

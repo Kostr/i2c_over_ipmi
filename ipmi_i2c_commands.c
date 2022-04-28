@@ -14,7 +14,7 @@ int read_i2c(uint8_t bus, uint8_t addr, uint8_t reg, uint8_t* data)
 	int rc = ipmicmd(BMC_SA, 0, APP_NETFN, MASTER_READ_WRITE_CMD, sizeof(cmd_data), &cmd_data, 1, &data_sz, &status);
 	if (rc) {
 #ifdef DEBUG
-        	printf("Error! ipmicmd: rc=%d, status=0x%08x\n", rc, status);
+        	fprintf(stderr, "Error! ipmicmd: rc=%d, status=0x%08x\n", rc, status);
 #endif
 	} else {
 		*data = (uint8_t)(status & 0xff);
@@ -35,7 +35,7 @@ int write_i2c(uint8_t bus, uint8_t addr, uint8_t reg, uint8_t val)
 	int rc = ipmicmd(BMC_SA, 0, APP_NETFN, MASTER_READ_WRITE_CMD, sizeof(cmd_data), &cmd_data, 1, &data_sz, &status);
 #ifdef DEBUG
 	if (rc) {
-        	printf("Error! ipmicmd: rc=%d, status=0x%08x\n", rc, status);
+        	fprintf(stderr, "Error! ipmicmd: rc=%d, status=0x%08x\n", rc, status);
 	}
 #endif
 	return rc;
