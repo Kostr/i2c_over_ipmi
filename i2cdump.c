@@ -46,19 +46,19 @@ int main(int argc, char* argv[])
 	if (argc != 3) {
 		fprintf(stderr, "Error! Not enough arguments\n");
 		usage(argv[0]);
-		return 1;
+		exit(2);
 	}
 
 	uint8_t bus, addr;
 	if (str_to_uint8(argv[1], &bus)) {
 		fprintf(stderr, "Error! Wrong number for the <I2C_BUS> value\n");
 		usage(argv[0]);
-		return 2;
+		exit(3);
 	}
 	if (str_to_uint8(argv[2], &addr)) {
 		fprintf(stderr, "Error! Wrong number for the <I2C_ADDR> value\n");
 		usage(argv[0]);
-		return 3;
+		exit(4);
 	}
 
 	uint8_t data;
