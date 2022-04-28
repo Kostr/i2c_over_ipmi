@@ -10,7 +10,7 @@
 void usage(char* program_name)
 {
 	printf("Usage:\n");
-	printf("  ./%s <I2C_BUS> <I2C_ADDR> <I2C_REG> <VAL>\n", program_name);
+	printf("  %s <I2C_BUS> <I2C_ADDR> <I2C_REG> <VAL>\n", program_name);
 }
 
 int str_to_uint8(const char* str, uint8_t* result)
