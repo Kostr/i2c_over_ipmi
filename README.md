@@ -1,4 +1,4 @@
-This program is intendend to provide `i2cdump` similar output for the devices under I2C busses of the BMC controller from the main CPU:
+Set of utilities to work with the devices under I2C busses of the BMC controller from the main CPU:
 ```
 CPU <---------> BMC ----- I2C0
     inband ipmi      |
@@ -8,6 +8,13 @@ CPU <---------> BMC ----- I2C0
                      |
                      ---- I2C7
 ```
+
+The repository includes these utilities:
+- `i2cdump_over_ipmi`
+- `i2cget_over_ipmi`
+- `i2cset_over_ipmi`
+
+They naming mimics standard utilities from the `i2c-tools` package.
 
 The communication is based on the IPMI command `Master Write-Read`:
 
