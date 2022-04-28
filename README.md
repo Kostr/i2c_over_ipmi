@@ -18,11 +18,11 @@ They naming mimics standard utilities from the `i2c-tools` package.
 
 The communication is based on the IPMI command `Master Write-Read`:
 
-![ipmi1.png](ipmi1.png?raw=true "ipmi1")
+![ipmi1.png](doc/ipmi1.png?raw=true "ipmi1")
 
 Its description can be found in the IPMI specification:
 
-![ipmi2.png](ipmi2.png?raw=true "ipmi2")
+![ipmi2.png](doc/ipmi2.png?raw=true "ipmi2")
 
 Off course this means that for this program the `BIOS<-->BMC` communication should be working (for example via KCS interface) and the BMC controller should implement this IPMI operation in its IPMI stack.
 
