@@ -55,6 +55,14 @@ int main(int argc, char* argv[])
 		usage(argv[0]);
 		exit(3);
 	}
+#ifndef EXTENDED_BUS_ID
+	if (bus > 7) {
+		fprintf(stderr, "Error! IPMI specification permits bus ID only in range 0..7\n");
+		fprintf(stderr, "If you want to use bus ID above 7, please recompile with EXTENDED_BUS_ID define\n");
+		fprintf(stderr, "Please see README.md for details\n");
+		exit(3);
+	}
+#endif
 	if (str_to_uint8(argv[2], &addr)) {
 		fprintf(stderr, "Error! Wrong number for the <I2C_ADDR> value\n");
 		usage(argv[0]);

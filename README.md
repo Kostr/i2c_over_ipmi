@@ -44,3 +44,15 @@ https://github.com/openbmc/phosphor-host-ipmid/blob/master/apphandler.cpp
 ```
 
 Also keep in mind that IPMI specification uses only 3 bits in command for I2C bus encoding. This means that it is not possible to access I2C busses with a bus number higher than 7 (`i2c-7`).
+
+There is a solution that can be used to use bus numbers higher than 7. This goes beyond the IPMI standard, so it probably wouldn't make it upstream in OpenBMC. But you can use this extension in your designs:
+
+`47821: Master Write-Read: Extend bus ID.` | https://gerrit.openbmc-project.xyz/c/openbmc/phosphor-host-ipmid/+/47821
+
+In this case 7 higher bits in the first byte of `Master Write-Read` IPMI command are used to encode I2C bus. Therefore you can encode I2C busses 0..127. This is more than enough for typical design.
+
+In case you are using this custom extension recompile programs with the `EXTENDED_BUS_ID` define:
+```
+make clean
+make CFLAGS=-DEXTENDED_BUS_ID
+```

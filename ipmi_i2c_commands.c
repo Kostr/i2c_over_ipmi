@@ -5,7 +5,11 @@
 int read_i2c(uint8_t bus, uint8_t addr, uint8_t reg, uint8_t* data)
 {
 	uint8_t cmd_data[4];
+#ifndef EXTENDED_BUS_ID
 	cmd_data[0] = ((bus & 0x7) << 1) | 0x1;
+#else
+	cmd_data[0] = ((bus & 0x7F) << 1) | 0x1;
+#endif
 	cmd_data[1] = (addr << 1);
 	cmd_data[2] = 1;
 	cmd_data[3] = reg;
@@ -25,7 +29,11 @@ int read_i2c(uint8_t bus, uint8_t addr, uint8_t reg, uint8_t* data)
 int write_i2c(uint8_t bus, uint8_t addr, uint8_t reg, uint8_t val)
 {
 	uint8_t cmd_data[5];
+#ifndef EXTENDED_BUS_ID
 	cmd_data[0] = ((bus & 0x7) << 1) | 0x1;
+#else
+	cmd_data[0] = ((bus & 0x7F) << 1) | 0x1;
+#endif
 	cmd_data[1] = (addr << 1);
 	cmd_data[2] = 1;
 	cmd_data[3] = reg;
